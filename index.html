@@ -15,7 +15,7 @@
             display: none;
             
             /* Thêm hiệu ứng animation */
-           animation: pulse 5s infinite ease-in-out; /* Phóng to - Thu nhỏ trong 5 giây, lặp lại mãi mãi */
+           animation: pulse 3s 1 ease-in-out forwards; /* Phóng to - Thu nhỏ trong 5 giây, lặp lại mãi mãi */
         }
 
         /* Định nghĩa hiệu ứng Phóng to - Thu nhỏ */
@@ -73,7 +73,7 @@
                 
                 index++;
                 // Sửa đổi thời gian chuyển đổi ảnh sau 5 giây (5000ms)
-                setTimeout(showNext, 3000); 
+                setTimeout(showNext, 4000); 
             } else {
                 document.getElementById('displayMsg').innerText = "Every moment with you is special. Happy birthday, my love! ❤️";
             }
