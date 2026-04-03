@@ -2,19 +2,38 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <title>Every picture is a little piece of the happiness we share.</title>
+    <title>Every picture is a little piece of the happiness we share</title>
     <style>
         body { background: #fff0f5; text-align: center; font-family: 'Arial', sans-serif; overflow: hidden; }
         .slide-container { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; }
-        .photo { width: 300px; border: 10px solid white; box-shadow: 0 10px 20px rgba(0,0,0,0.2); display: none; animation: fadeIn 1s; }
+        
+        /* Hiệu ứng Phóng to - Thu nhỏ lãng mạn */
+        .photo { 
+            width: 300px; 
+            border: 10px solid white; 
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2); 
+            display: none;
+            
+            /* Thêm hiệu ứng animation */
+            animation: pulse 5s infiniteEaseInOut; /* Phóng to - Thu nhỏ trong 5 giây, lặp lại mãi mãi */
+        }
+
+        /* Định nghĩa hiệu ứng Phóng to - Thu nhỏ */
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0; } /* Bắt đầu: Ẩn và kích thước thường */
+            10% { opacity: 1; } /* Hiện rõ trong 10% thời gian */
+            50% { transform: scale(1.1); } /* Giữa: Phóng to 10% */
+            90% { opacity: 1; } /* Hiện rõ đến 90% thời gian */
+            100% { transform: scale(1); opacity: 0; } /* Kết thúc: Thu nhỏ về thường và ẩn đi */
+        }
+
         .message { font-size: 24px; color: #d02090; margin-top: 20px; min-height: 40px; }
-        @keyframes fadeIn { from {opacity: 0; transform: scale(0.9);} to {opacity: 1; transform: scale(1);} }
         button { padding: 10px 20px; background: #ff69b4; color: white; border: none; border-radius: 20px; cursor: pointer; }
     </style>
 </head>
 <body>
     <div class="slide-container">
-        <audio id="bgMusic" src="https://www.youtube.com/watch?v=DydIIDQuhxU&list=RDDydIIDQuhxU&start_radio=1" loop></audio>
+        <audio id="bgMusic" src="TRANG - 'thư cho anh' (OFFICIAL MUSIC VIDEO) - Nhạc của Trang.mp3" loop></audio>
         
         <div id="content">
             <button onclick="startSlideshow()">Tap here for your birthday surprise 🎂 ❤️</button>
@@ -47,12 +66,14 @@
                 const imgTag = document.getElementById('displayPhoto');
                 const msgTag = document.getElementById('displayMsg');
                 
+                // Cập nhật tên ảnh và lời chúc
                 imgTag.src = data[index].img;
                 imgTag.style.display = 'block';
                 msgTag.innerText = data[index].msg;
                 
                 index++;
-                setTimeout(showNext, 5000); // Đổi ảnh sau 5 giây
+                // Sửa đổi thời gian chuyển đổi ảnh sau 5 giây (5000ms)
+                setTimeout(showNext, 3000); 
             } else {
                 document.getElementById('displayMsg').innerText = "Every moment with you is special. Happy birthday, my love! ❤️";
             }
